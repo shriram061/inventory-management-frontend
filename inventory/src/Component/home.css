@@ -1,0 +1,27 @@
+#delete{
+    background-color: #82AAE3;
+}
+#add{
+    background-color: #91D8E4;
+}
+#view{
+    background-color: #BFEAF5;
+}
+#edit{
+    background-color: #e0f8f7;
+}
+#body{
+    background-color: rgb(219, 253, 197);
+}
+
+nav{
+    position: sticky;}
+
+    #bgm{
+        background-color: #edf5f4;
+        color: black;
+    }
+    
+
+
+   

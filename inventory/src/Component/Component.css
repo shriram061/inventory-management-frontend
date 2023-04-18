@@ -1,0 +1,53 @@
+/* .container {    
+    padding: 21px; 
+    padding-left: 200px;
+    padding-right: 200px;   
+     border-radius: 5px;    
+     background-color: #f2f2f2; 
+   
+    }    
+        
+    input[type=text], select     
+    {    
+      width: 100%;    
+      padding: 12px 20px;    
+      margin: 8px 0;    
+      display: inline-block;    
+      border: 1px solid #ccc;    
+      border-radius: 4px;    
+      box-sizing: border-box; 
+   
+    }    
+    input[type=textarea]{
+        padding: 12px,20px;
+    }
+        
+    input[type=submit] {    
+      width: 100%;    
+      background-color: blueviolet;    
+      color: white;    
+      padding: 14px 20px;    
+      margin: 8px 0;    
+      border: none;    
+      border-radius: 4px;    
+      cursor: pointer;    
+    }    
+        
+    input[type=submit]:hover {    
+      background-color: blueviolet;    
+    }    
+    .showError{    
+      border-color: #a94442 !important;    
+      color: #a94442 !important;    
+      margin-bottom: 15px;    
+    } */
+
+
+
+    input{
+      color: rgb(223, 12, 12);
+    }
+    p,h5{
+      color: black;
+    }
+   

@@ -1,0 +1,7 @@
+#j{
+    visibility: hidden;
+}
+#span{
+    --bs-badge-padding-x: -0.35em;
+    color: rgb(253, 4, 4);
+}

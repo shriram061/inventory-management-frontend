@@ -1,0 +1,20 @@
+#z{
+    background-color: rgb(135, 134, 133);
+    color: white;
+}
+#t{
+    --bs-badge-padding-x: -0.35em;
+}
+#q{
+    visibility: hidden;
+}
+#l{
+    color:rgb(153, 151, 8);
+}
+#e{
+    color:rgb(251, 1, 1);
+}
+#arrow{
+    color: white;
+    background-color: #24221d;
+}
