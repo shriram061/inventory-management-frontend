@@ -69,7 +69,9 @@ function Report() {
                 <th>Price</th>
                 <th>Date</th>
                 <th>Time</th>
+                
                 <th>Total</th>
+
                 
               </tr>
             </thead>
@@ -82,7 +84,8 @@ function Report() {
                   <td>{item.price}</td>
                   <td>{formatDate(item.date)}</td>
                   <td>{formatTime(item.date)}</td>
-                  <td>{item.price * item.quantity}</td>
+                  
+                  <td>{item.total}</td>
                   
                 </tr>
               ))}
