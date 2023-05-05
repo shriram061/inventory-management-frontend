@@ -4,6 +4,8 @@ import "./search.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import Swal from 'sweetalert2';
+
 import NavNotification from './NavNotification';
 
 
@@ -54,23 +56,60 @@ export default function Search1() {
       });
     }
     
-
     const handleDelete = (id) => {
-      fetch(`http://localhost:9876/delete/${id}`, {
-        method: 'DELETE',
-  
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will not be able to recover this item!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:9876/delete/${id}`, {
+            method: 'DELETE',
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Failed to delete item');
+              }
+              setData((prevData) => prevData.filter((item) => item.id !== id));
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+          Swal.fire(
+            'Deleted!',
+            'Your item has been deleted.',
+            'success'
+          )
+          window.location.reload(false);
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Your item is safe :)',
+            'error'
+          )
+        }
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Failed to delete item');
-          }
-          setData((prevData) => prevData.filter((item) => item.id !== id));
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      window.location.reload(false);
     };
+    
+    // const handleDelete = (id) => {
+    //   fetch(`http://localhost:9876/delete/${id}`, {
+    //     method: 'DELETE',
+  
+    //   })
+    //     .then((response) => {
+    //       if (!response.ok) {
+    //         throw new Error('Failed to delete item');
+    //       }
+    //       setData((prevData) => prevData.filter((item) => item.id !== id));
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    //   window.location.reload(false);
+    // };
 
 
   
@@ -115,13 +154,7 @@ export default function Search1() {
       setSortMethod('id');
       setProducts(sortedProducts);
     }
-  
 
-
-
-
-
-  
     return (
       <div>
         <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
@@ -223,7 +256,8 @@ export default function Search1() {
                 <td>{product.quantity}</td>
                 <td><span className={product.status === "INSTOCK" ? "badge bg-success" :product.status === "LOWSTOCK" ? "badge bg-warning" : "badge bg-danger"}>{product.status}</span></td>
                 <td>{product.validity}</td>
-                <td><button id='z' onClick={() => handleDelete(product.productId)}>Delete</button></td>
+                <td><button id='z' onClick={() => handleDelete(product.productId)}>Delete</button>
+                </td>
                 
                 <td>
                         <Link to={`/edit/${product.productId}`}> Edit </Link>

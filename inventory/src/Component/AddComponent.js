@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./add.css"
 import NavNotification from './NavNotification';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 // import { NavLink,Link } from "react-router-dom";
 class AddComponent extends Component {
     
@@ -25,35 +26,75 @@ class AddComponent extends Component {
             this.setState({ [event.target.name]: event.target.value });
         }
     
+        // handleSubmit(event) {
+        //     event.preventDefault();
+        //     this.setState({ isLoading: true });
+        //     axios.post('http://localhost:9876/add', {
+        //         productName: this.state.productName,
+        //         price: this.state.price,
+        //         quantity: this.state.quantity,
+        //         validity: this.state.validity,
+        //     })
+        //     .then((response) => {
+        //         console.log(response.data);
+        //         this.setState({
+        //             isLoading: false,
+        //             productName: '',
+        //             price: '',
+        //             quantity: '',
+        //             validity: '',
+        //             errorMessage: '',
+        //         });
+        //         alert('Inventory added successfully');
+        //     })
+        //     .catch((error) => {
+        //         console.log(error.response);
+        //         this.setState({
+        //             isLoading: false,
+        //             errorMessage: error.response.data.message,
+        //         });
+        //     });
+        // }
         handleSubmit(event) {
             event.preventDefault();
             this.setState({ isLoading: true });
-            axios.post('http://localhost:9876/add', {
+            axios
+              .post('http://localhost:9876/add', {
                 productName: this.state.productName,
                 price: this.state.price,
                 quantity: this.state.quantity,
                 validity: this.state.validity,
-            })
-            .then((response) => {
+              })
+              .then((response) => {
                 console.log(response.data);
                 this.setState({
-                    isLoading: false,
-                    productName: '',
-                    price: '',
-                    quantity: '',
-                    validity: '',
-                    errorMessage: '',
+                  isLoading: false,
+                  productName: '',
+                  price: '',
+                  quantity: '',
+                  validity: '',
+                  errorMessage: '',
                 });
-                alert('Inventory added successfully');
-            })
-            .catch((error) => {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success!',
+                  text: 'Inventory added successfully',
+                });
+              })
+              .catch((error) => {
                 console.log(error.response);
                 this.setState({
-                    isLoading: false,
-                    errorMessage: error.response.data.message,
+                  isLoading: false,
+                  errorMessage: error.response.data.message,
                 });
-            });
-        }
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: error.response.data.message,
+                });
+              });
+          }
+        
 
     render() {
 

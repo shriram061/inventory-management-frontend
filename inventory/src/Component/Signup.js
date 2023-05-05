@@ -3,6 +3,8 @@ import "../style.css";
 import User from "../Service/UserService.js";
 import { Link } from "react-router-dom";
 import NavNotification from "./NavNotification";
+import Swal from 'sweetalert2';
+
 
 import ViewUserComponent from "./ViewUserComponent";
 // import Signin from "./Signin";
@@ -29,7 +31,6 @@ export default class Signup extends Component {
   register = (event) => {
     event.preventDefault();
     let user = {
-      // emailId: this.state.emailId,
       userName: this.state.userName,
       password: this.state.password,
       emailId: this.state.emailId,
@@ -41,17 +42,34 @@ export default class Signup extends Component {
           User.saveUser(user)
             .then((res) => {
               console.log(res.data);
-              alert("registration successful");
-              window.location.reload(false);
-              //window.location.href = "http://localhost:3000/login";
+              Swal.fire({
+                title: "Registration Successful",
+                text: "Account Generated.",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload(false);
+                  //window.location.href = "http://localhost:3000/login";
+                }
+              });
             })
             .catch((err) => {
               console.log(err);
             });
+        } else {
+          Swal.fire({
+            title: "Registration Failed",
+            text: "Username already exists. Please choose a different username.",
+            icon: "error",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "OK",
+          });
         }
       })
       .catch((err) => {
-        alert(err);
+        console.log(err);
       });
   };
 

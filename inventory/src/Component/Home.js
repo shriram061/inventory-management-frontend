@@ -38,13 +38,20 @@ export default function Home()
           <div className="nav mx-auto navbar-nav navbar-right order-3">
             <ul className="navbar-nav ml-auto">
             
-              
-              <Link className="btn" to="/about">
+            {/* <Link className="btn" to="/adminchatapplication">
+                {" "}
+                <a className="navbtn2 ">Chat</a>
+              </Link> */}
+
+              {/* <Link className="btn" to="/about">
                 {" "}
                 <a className="navbtn2 ">About</a>
-              </Link>
+              </Link> */}
               
-             
+              <Link className="btn" to="/queriesview">
+                {" "}
+                <a className="navbtn2 ">ViewQuery</a>
+              </Link>
              
               <Link  className="btn  me-2" to="/login">
                 {" "}

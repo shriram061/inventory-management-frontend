@@ -12,7 +12,7 @@ export default function About() {
           <div className="nav navbar-nav mx-auto navbar-left">
             <a
               className="navbar-brand mx-auto nav navbar-nav navbar-right"
-              href="/home"
+              href="#"
             >
               {/* INVENTORY MANAGEMENT */}
 
@@ -26,9 +26,9 @@ export default function About() {
             <ul className="navbar-nav ml-auto">
             
               
-              <Link  className="btn " to="/home">
+              <Link  className="btn " to="/queriespost">
                 {" "}
-                <a className="navbtn2 ">Home</a>
+                <a className="navbtn2 ">Back</a>
               </Link>
               
              

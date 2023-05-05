@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 
 
 export default function EditService1() {
@@ -61,22 +61,45 @@ export default function EditService1() {
   //   loadProducts();
   // };
 
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setShowReloadMessage(true);
+  //   await fetch(`http://localhost:9876/view/update/${id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(products)
+  //   });
+  //   navigate("/viewstatus");
+  //   setShowReloadMessage(false);
+  //   loadProducts();
+  // };
+  
   const onSubmit = async (e) => {
     e.preventDefault();
     setShowReloadMessage(true);
+
     await fetch(`http://localhost:9876/view/update/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(products)
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(products)
     });
+
     navigate("/viewstatus");
     setShowReloadMessage(false);
     loadProducts();
-  };
-  
 
+    // Show a success message
+    Swal.fire({
+        title: 'Success',
+        text: 'Product has been updated',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+};
 
 
   return (

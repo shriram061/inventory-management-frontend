@@ -21,6 +21,11 @@ import EditUser from "./Component/EditUser";
 import ViewCartDelivery from "./Component/ViewCartProduct";
 import CartReport from "./Component/CartReport";
 import InventReport from "./Component/InventReport";
+import ChatRoom from "./Component/ChatRoom";
+import AdminChatRoom from "./Component/AdminChatRoom";
+import ContactUs from "./Component/ContactUs";
+import ContactUsForm from "./Component/ContactUsForm";
+import SocialMedia from "./Component/SocialMedia";
 
 
 
@@ -42,6 +47,8 @@ class App extends Component {
             <Route path="/a" element={<NavNotification/>}/>
             <Route path="/ehome" element={<ExecutiveHome/>} />
             <Route path="/edituser/" element={<EditUser/>}/>
+            <Route path="/chatapplication" element={<ChatRoom/>}/>
+            <Route path="/adminchatapplication" element={<AdminChatRoom/>}/>
             
             <Route path="/productreport" element={<InventReport/>}/>
             
@@ -52,10 +59,12 @@ class App extends Component {
             <Route path="/deliverycart" element={<ESearch/>}/>
             <Route path="/viewcartreport" element={<CartReport/>}/>
             
-            
+            <Route path="/queriesview" element={<ContactUs/>}/>
+            <Route path="/queriespost" element={<ContactUsForm/>}/>
             {/* <Route path="/viewdselivery" element={<ViewUser/>}/> */}
             <Route path="/viewdelivery" element={<ViewCartDelivery/>}/>
             <Route path="/admin" element={<Admin/>}/>
+            <Route path="/social" element={<SocialMedia/>}/>
             </Routes>
       </Router>
     );

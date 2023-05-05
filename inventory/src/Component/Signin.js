@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthFunctions } from "../context/AuthContext";
 import User from "../Service/UserService";
 import "../style.css";
+import SocialMedia from "../Component/SocialMedia";
 
 export default class Signin extends Component{
     constructor(props){
@@ -105,6 +106,9 @@ export default class Signin extends Component{
           />
           <button type="submit" className="butr">SIGNIN</button>
           <Link to="/admin">Admin Login Go Here</Link>
+          {/* <Link to="/chatapplication">Discuss Forum</Link>
+          <Link to="http://localhost:6543/log">Discuss Forum</Link> */}
+<SocialMedia/>
         </form>
         <div className="text-center left-main p-2">
         <h1 className="dog">Welcome Back </h1>
