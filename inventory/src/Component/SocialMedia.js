@@ -20,6 +20,12 @@ function SocialMedia(){
             })
 
             console.log(data)
+            console.log(data.data.email)
+            console.log(data.data.name)
+            localStorage.setItem('name', data.data.name);
+            localStorage.setItem('email', data.data.email);
+
+
             window.location.href='http://localhost:3000/queriespost';
         }
             catch(err){
@@ -53,9 +59,12 @@ return(
   }}
 />; */}
 
-<button onClick={login}>
+{/* <button onClick={login}>
     ContactUs
-</button>
+</button> */}
+{/* <button type="button"  class="btn btn-outline-warning">Contact Us</button> */}
+<button type="button" onClick={() => login()} class="btn btn-warning btn-lg">ContactUs</button>
+
 
     </div>
 );

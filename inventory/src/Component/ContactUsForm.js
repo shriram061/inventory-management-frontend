@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link} from "react-router-dom";
 import NavNotification from "./NavNotification";
-
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 function ContactUsForm() {
   const [name, setName] = useState("");
   const [emailId, setEmailId] = useState("");
@@ -26,6 +28,11 @@ function ContactUsForm() {
         console.log(error);
       });
   };
+
+  const usernamemain = localStorage.getItem('name');
+  const useremailmain = localStorage.getItem('email');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
 
   // function handleLogout() {
   //   const { signOut } = useGoogleLogout();
@@ -57,7 +64,30 @@ function ContactUsForm() {
         <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
           <nav className="navbar navbar-expand-md navbar-dark navsection shadow">
             <span id="q">eeee</span>
-            <NavNotification />
+            {/* <NavNotification /> */}
+
+            <span id='j' >vvv</span>
+       
+        
+
+        <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+<Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
+  <DropdownToggle nav>
+    <FontAwesomeIcon icon={faUser} style={{ color: 'white' }} />
+    
+  </DropdownToggle>
+  <DropdownMenu right>
+  <DropdownItem  header>Welcome back </DropdownItem>
+  <DropdownItem id="l" header>{usernamemain} ({useremailmain})</DropdownItem>
+  
+    
+  </DropdownMenu>
+</Dropdown></div>
+
+
+
+
+
             
             <div class="nav navbar-nav mx-auto navbar-left">
               <Link to="#">
@@ -101,7 +131,7 @@ function ContactUsForm() {
             type="text"
             className="form-control"
             id="name"
-            value={name}
+            value={usernamemain}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -113,7 +143,7 @@ function ContactUsForm() {
             type="email"
             className="form-control"
             id="email"
-            value={emailId}
+            value={useremailmain}
             onChange={(e) => setEmailId(e.target.value)}
           />
         </div>
