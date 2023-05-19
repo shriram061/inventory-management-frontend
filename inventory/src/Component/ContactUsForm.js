@@ -13,12 +13,14 @@ function ContactUsForm() {
  
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newQuery = { name, emailId, phoneNo, question };
+    // emailId={useremailmain};
+    const newQuery = { name,emailId, phoneNo, question };
     axios
       .post("http://localhost:9876/contact/querypost", newQuery)
       .then((response) => {
         console.log(response);
         // Reset form fields on success
+        // const a = {useremailmain};
         setName("");
         setEmailId("");
         setPhoneNo("");
@@ -34,11 +36,13 @@ function ContactUsForm() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
 
-  // function handleLogout() {
-  //   const { signOut } = useGoogleLogout();
+  function handleLogout() {
+    localStorage.removeItem(useremailmain);
+    localStorage.removeItem(usernamemain);
+    window.location.href='http://localhost:3000/';
   
-  //   signOut();
-  // }
+   
+  }
   
 
   
@@ -104,7 +108,7 @@ function ContactUsForm() {
                 </Link>
                
                 <Link to="/">
-                  <a className="navbtn2">Logout</a>
+                  <a className="navbtn2" >Logout</a>
                 </Link>
                 {/* <button className="navbtn2" onClick={handleLogout}>
                   Logout
@@ -131,7 +135,7 @@ function ContactUsForm() {
             type="text"
             className="form-control"
             id="name"
-            value={usernamemain}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -143,8 +147,11 @@ function ContactUsForm() {
             type="email"
             className="form-control"
             id="email"
-            value={useremailmain}
+            placeholder={useremailmain}
+            value={emailId}
+            // disabled
             onChange={(e) => setEmailId(e.target.value)}
+            
           />
         </div>
         <div className="mb-3">

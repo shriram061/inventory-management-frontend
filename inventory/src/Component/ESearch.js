@@ -142,56 +142,56 @@ export default function ESearch() {
 
 
   
-    return (
+    return (<>
+    <div id="body">
+
       <div>
-        <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
-          <nav className="navbar navbar-expand-md navbar-dark navsection shadow">
-        
+      <div className="bg-secondary nav-bar navsection  navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar shadow navsection navbar-expand-md navbar-dark ">
 
-<span id='q'>eeee</span>
-<NavNotification />
-{/* 
-<div style={{ border: '1px solid #ccc', padding: '10px' }}>
-<Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
-  <DropdownToggle nav>
-    <FontAwesomeIcon icon={faBell} style={{ color: 'white' }} />
-    {zeroQtyCount > 0 && (
-      <span id="span" className="badge badge-danger" style={{ verticalAlign: 'super', marginLeft: '5px' }}>
-        {zeroQtyCount}
-      </span>
-    )}
-  </DropdownToggle>
-  <DropdownMenu right>
-  <DropdownItem id="l" header>LOWSTOCK-{zeroQtyCount1} </DropdownItem>
+<NavNotification/>
   
-    {products.filter(product => product.quantity < 5 && product.quantity > 0 ).map(product => (
-      
-      <DropdownItem key={product.productId}>Product:"{product.productName}"(id:{product.productId}) is in {product.status} state.</DropdownItem>
-    ))}<hr/>
-    <DropdownItem id="e" header>EMPTY-{zeroQtyCount2}</DropdownItem>
-    {products.filter(product => product.quantity === 0  ).map(product => (
-      <DropdownItem key={product.productId}>Product:"{product.productName}"(id:{product.productId}) is in {product.status} state.</DropdownItem>
-    ))}
-  </DropdownMenu>
-</Dropdown></div> */}
 
+          <div className="nav navbar-nav mx-auto navbar-left">
+            <a
+              className="navbar-brand mx-auto nav navbar-nav navbar-right"
+              href="/ehome"
+            >
+              {/* INVENTORY MANAGEMENT */}
 
-            <div class="nav navbar-nav mx-auto navbar-left">
-              <Link to="/ehome">  <a class="navbar-brand mx-auto nav navbar-nav navbar-right brand" >INVENTORY MANAGEMENT</a></Link>
-            </div>
-            <div class="nav navbar-nav mx-auto navbar">
+              <span className="brand">INVENTORY MANAGEMENT</span>
+            </a>
+          </div>
+          <div className="nav navbar-nav mx-auto navbar">
+            <a className="navbar-brand mx-auto nav navbar-nav navbar" href="/ehome"/>
+          </div>
+          <div className="nav mx-auto navbar-nav navbar-right order-3">
+            <ul className="navbar-nav ml-auto">
+            
+            {/* <Link className="btn" to="/adminchatapplication">
+                {" "}
+                <a className="navbtn2 ">Chat</a>
+              </Link> */}
 
-            </div>
-            <div class="nav mx-auto navbar-nav navbar-right order-3">
-              <ul class="navbar-nav ml-auto">
-                <Link to="/viewdelivery">   <a className="navbtn2 "  >Cart</a></Link>
-                <Link to="/viewcartreport">   <a className="navbtn2 "  >Report</a></Link>
-
-                <Link to="/login">    <a className="navbtn2 "> Logout</a></Link>
-              </ul>
-            </div>
-          </nav>
-        </div>
+              <Link className="btn" to="/viewdelivery">
+                {" "}
+                <a className="navbtn2 ">Cart</a>
+              </Link>
+              
+              <Link className="btn" to="/viewcartreport">
+                {" "}
+                <a className="navbtn2 ">Report</a>
+              </Link>
+             
+              <Link  className="btn  me-2" to="/login">
+                {" "}
+                <a className="navbtn2 "> Logout</a>
+              </Link>
+              
+            </ul>
+          </div>
+        </nav>
+      </div>
         <div className="container">
         <div className="shadow  mt-4 p-5 bg-white rounded text-dark">
         <form onSubmit={handleSearch}>
@@ -294,6 +294,6 @@ export default function ESearch() {
         
         </div>
       </div>
-      </div>
+      </div></div></>
     );
     }

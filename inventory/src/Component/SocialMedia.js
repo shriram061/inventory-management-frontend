@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useGoogleLogin } from '@react-oauth/google';
-
+import { FaGoogle } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 function SocialMedia(){
 
-    
+    const gitlogin = () =>{
+      window.location.assign('http://localhost:6543/log');
+
+    };
     const login = useGoogleLogin    ({
         onSuccess: async response => {
             try{
@@ -63,11 +67,18 @@ return(
     ContactUs
 </button> */}
 {/* <button type="button"  class="btn btn-outline-warning">Contact Us</button> */}
-<button type="button" onClick={() => login()} class="btn btn-warning btn-lg">ContactUs</button>
+<button type="button" onClick={() => login()} class="btn btn-info btn-lg">
+<i><FaGoogle /></i>
 
-
-    </div>
-);
+</button>
+{/* <button onClick={() => gitlogin()}  className="btn btn-warning btn-lg">
+            
+<i><FaGithub /></i>
+            
+          </button> */}
+  </div>
+  
+)
 }
 
 export default SocialMedia;

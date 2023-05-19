@@ -106,8 +106,8 @@ export default class Signin extends Component{
           />
           <button type="submit" className="butr">SIGNIN</button>
           <Link to="/admin">Admin Login Go Here</Link>
-          {/* <Link to="/chatapplication">Discuss Forum</Link>
-          <Link to="http://localhost:6543/log">Discuss Forum</Link> */}
+          {/* <Link to="/chatapplication">Discuss Forum</Link> */}
+          {/* <Link to="http://localhost:6543/log">Discuss Forum</Link> */}
 
         </form>
         <div className="text-center left-main p-2">
@@ -118,6 +118,7 @@ export default class Signin extends Component{
           <p>Get in touch with us!!!!</p>
           <p>Click on contact us!</p>
           <SocialMedia/>
+          
           {/* <Link to="/register"><button className="btnl">REGISTER</button></Link> */}
         </div>
       </div>

@@ -157,13 +157,59 @@ export default function Search1() {
 
     return (
       <div>
-        <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
+        <div className="bg-secondary nav-bar navsection  navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar shadow navsection navbar-expand-md navbar-dark ">
+
+<NavNotification/>
+  
+
+          <div className="nav navbar-nav mx-auto navbar-left">
+            <a
+              className="navbar-brand mx-auto nav navbar-nav navbar-right"
+              href="/home"
+            >
+              {/* INVENTORY MANAGEMENT */}
+
+              <span className="brand">INVENTORY MANAGEMENT - ADMIN</span>
+            </a>
+          </div>
+          <div className="nav navbar-nav mx-auto navbar">
+            <a className="navbar-brand mx-auto nav navbar-nav navbar" href="#"/>
+          </div>
+          <div className="nav mx-auto navbar-nav navbar-right order-3">
+            <ul className="navbar-nav ml-auto">
+            
+            {/* <Link className="btn" to="/adminchatapplication">
+                {" "}
+                <a className="navbtn2 ">Chat</a>
+              </Link> */}
+
+              <Link className="btn" to="/add">
+                {" "}
+                <a className="navbtn2 ">Add</a>
+              </Link>
+              
+              <Link className="btn" to="/productreport">
+                {" "}
+                <a className="navbtn2 ">Report</a>
+              </Link>
+             
+              <Link  className="btn  me-2" to="/login">
+                {" "}
+                <a className="navbtn2 "> Logout</a>
+              </Link>
+              
+            </ul>
+          </div>
+        </nav>
+      </div>
+      {/*  <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
           <nav className="navbar navbar-expand-md navbar-dark navsection shadow">
         
 
 <span id='q'>eeee</span>
 <NavNotification />
-{/* <div style={{ border: '1px solid #ccc', padding: '10px' }}>
+ <div style={{ border: '1px solid #ccc', padding: '10px' }}>
 <Dropdown isOpen={dropdownOpen} toggle={() => setDropdownOpen(!dropdownOpen)}>
   <DropdownToggle nav>
     <FontAwesomeIcon icon={faBell} style={{ color: 'white' }} />
@@ -185,7 +231,7 @@ export default function Search1() {
       <DropdownItem key={product.productId}>Product:"{product.productName}"(id:{product.productId}) is in {product.status} state.</DropdownItem>
     ))}
   </DropdownMenu>
-</Dropdown></div> */}
+</Dropdown></div> 
 
 
             <div class="nav navbar-nav mx-auto navbar-left">
@@ -203,7 +249,7 @@ export default function Search1() {
               </ul>
             </div>
           </nav>
-        </div>
+        </div> */}
         <div className="container">
         <div className="shadow  mt-4 p-5 bg-white rounded text-dark">
         <form onSubmit={handleSearch}>
