@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Modal, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import NavNotification from "./NavNotification";
-
+import Swal from 'sweetalert2';
 import axios from 'axios';
 const ViewUserComponent = () => {
   const [data, setData] = useState([]);
@@ -14,21 +14,51 @@ const ViewUserComponent = () => {
       .catch(error => console.error(error));
   }, []);
   
-  const handleDelete = (id) => {
-    fetch(`http://localhost:9876/user/${id}`, {
-      method: 'DELETE',
+  // const handleDelete = (id) => {
+  //   fetch(`http://localhost:9876/user/${id}`, {
+  //     method: 'DELETE',
       
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to delete item');
-        }
-        setData((prevData) => prevData.filter((item) => item.id !== id));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-      window.location.reload(false);
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error('Failed to delete item');
+  //       }
+  //       setData((prevData) => prevData.filter((item) => item.id !== id));
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  //     window.location.reload(false);
+  // };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this user!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:9876/user/${id}`, {
+          method: 'DELETE',
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to delete item');
+            }
+            setData((prevData) => prevData.filter((item) => item.id !== id));
+            Swal.fire('Deleted!', 'The user has been deleted.', 'success');
+            window.location.reload(false);
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire('Error!', 'Failed to delete the user.', 'error');
+          });
+      }
+    });
   };
   // const [show, setShow] = useState(false);
   // const handleShow = () => setShow(true);

@@ -87,9 +87,11 @@ function ContactUs() {
           </nav>
         </div>
       </div>
-      <div className="container mt-5">
-        <h1 className="mb-4">Contact Us Queries</h1>
-        <table className="table table-striped table-dark table-bordered">
+      <div className="container mt-5"><hr/>
+        <h1 className="d-flex justify-content-center">Contact Us Queries</h1>
+        {/* <br/> */}
+        <hr/>
+        <table className="table table-striped table-success table-bordered">
           <thead>
             <tr>
               <th>ID</th>
@@ -97,12 +99,12 @@ function ContactUs() {
               <th>Email</th>
               <th>Phone No</th>
               <th>Message</th>
-              <th>delete</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {queries.map((query) => (
-              <tr key={query.id} class="table-danger" >
+              <tr key={query.id} class="table-dark" >
                 <td>{query.contactId}</td>
                 <td>{query.name}</td>
                 <td>{query.emailId}</td>

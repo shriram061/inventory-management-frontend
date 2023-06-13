@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { json, Link, useNavigate, useParams } from 'react-router-dom';
 import NavNotification from './NavNotification';
 // import './ViewUser.css';
+import Swal from 'sweetalert2';
+
 import jsPDF from 'jspdf';
 import "jspdf-autotable";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -102,28 +104,71 @@ function ViewCartProduct() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    // const handleCheckout = () => {
+    //     setLoading(true);
+    //     fetch('http://localhost:9876/cart/checkout?userId='+ userIdmain, {
+    //         method: 'POST',
+    //         //   body: JSON.stringify({ 1}),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(response => response.text())
+    //         .then(data => {
+    //             setLoading(false);
+    //             setMessage('Checked out successfully!');
+    //             window.location.reload(false);
+    //             console.log(data);
+    //         })
+    //         .catch(error => {
+    //             setLoading(false);
+    //             setError(error);
+    //         });
+    // }
     const handleCheckout = () => {
         setLoading(true);
-        fetch('http://localhost:9876/cart/checkout?userId='+ userIdmain, {
-            method: 'POST',
-            //   body: JSON.stringify({ 1}),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        fetch('http://localhost:9876/cart/checkout?userId=' + userIdmain, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
         })
-            .then(response => response.text())
-            .then(data => {
-                setLoading(false);
-                setMessage('Checked out successfully!');
+          .then(response => response.text())
+          .then(data => {
+            setLoading(false);
+            if (data === 'success') {
+              Swal.fire({
+                icon: 'success',
+                title: 'Checked out successfully!',
+                showConfirmButton: false,
+                timer: 1500
+              }).then(() => {
                 window.location.reload(false);
-                console.log(data);
-            })
-            .catch(error => {
-                setLoading(false);
-                setError(error);
+              });
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to checkout. Please try again later.',
+              });
+            }
+          })
+          .catch(error => {
+            setLoading(false);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'An error occurred. Please try again later.',
             });
-    }
-
+          });
+          if (cartItems.length === 0) {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Empty Cart',
+              text: 'There are no items in the cart.',
+            });
+          }
+        };      
     
 
 
@@ -209,7 +254,7 @@ function ViewCartProduct() {
 
     return (
         <div>
-            <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
+            {/* <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
           <nav className="navbar navbar-expand-md navbar-dark navsection shadow">
 
 
@@ -234,8 +279,53 @@ function ViewCartProduct() {
               </ul>
             </div>
           </nav>
-        </div>
+        </div> */}
+             <div className="bg-secondary nav-bar navsection  navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar shadow navsection navbar-expand-md navbar-dark ">
+
+<NavNotification/>
+  
+
+          <div className="nav navbar-nav mx-auto navbar-left">
+            <a
+              className="navbar-brand mx-auto nav navbar-nav navbar-right"
+              href="/ehome"
+            >
+              {/* INVENTORY MANAGEMENT */}
+
+              <span className="brand">INVENTORY MANAGEMENT</span>
+            </a>
+          </div>
+          <div className="nav navbar-nav mx-auto navbar">
+            <a className="navbar-brand mx-auto nav navbar-nav navbar" href="#"/>
+          </div>
+          <div className="nav mx-auto navbar-nav navbar-right order-3">
+            <ul className="navbar-nav ml-auto">
             
+            {/* <Link className="btn" to="/adminchatapplication">
+                {" "}
+                <a className="navbtn2 ">Chat</a>
+              </Link> */}
+
+              {/* <Link className="btn" to="/about">
+                {" "}
+                <a className="navbtn2 ">About</a>
+              </Link> */}
+              
+              <Link className="btn" to="/ehome">
+                {" "}
+                <a className="navbtn2 ">Home</a>
+              </Link>
+             
+              <Link  className="btn  me-2" to="/login">
+                {" "}
+                <a className="navbtn2 "> Logout</a>
+              </Link>
+              
+            </ul>
+          </div>
+        </nav>
+      </div>
             <div className="container">
             <div className="shadow  mt-4 p-5 bg-white rounded text-dark">
                 

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import NavNotification from "./NavNotification";
+import Swal from 'sweetalert2';
+
 export default function EditUser() {
 
     const [username, setUsername] = useState('');
@@ -23,16 +25,43 @@ export default function EditUser() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const response = await axios.put(`http://localhost:9876/user/`+userIdmain, {
+    
+        try {
+          const response = await axios.put(`http://localhost:9876/user/`+userIdmain, {
             userName: username,
             emailId: email,
             password: password,
-        });
+          });
+    
+          Swal.fire({
+            title: 'Success',
+            text: 'User updated successfully',
+            icon: 'success',
+          });
+    
+          console.log(response.data);
+          navigate('/ehome'); // redirect to user list page after update
+        } catch (error) {
+          Swal.fire({
+            title: 'Error',
+            text: 'Failed to update user',
+            icon: 'error',
+          });
+        }
+      };
+    
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
 
-        console.log(response.data);
-        navigate('/ehome'); // redirect to user list page after update
-    };
+    //     const response = await axios.put(`http://localhost:9876/user/`+userIdmain, {
+    //         userName: username,
+    //         emailId: email,
+    //         password: password,
+    //     });
+
+    //     console.log(response.data);
+    //     navigate('/ehome'); // redirect to user list page after update
+    // };
 
     return (
         <>

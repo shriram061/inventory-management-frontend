@@ -81,7 +81,7 @@ export default function InventReport() {
 
   return (
     <div className="inventory-report">
-      <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
+      {/* <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
         <nav className="navbar navbar-expand-md navbar-dark navsection shadow">
 
 
@@ -112,6 +112,52 @@ export default function InventReport() {
        
 
 
+      </div> */}
+      <div className="bg-secondary nav-bar navsection  navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar shadow navsection navbar-expand-md navbar-dark ">
+
+<NavNotification/>
+  
+
+          <div className="nav navbar-nav mx-auto navbar-left">
+            <a
+              className="navbar-brand mx-auto nav navbar-nav navbar-right"
+              href="#"
+            >
+              {/* INVENTORY MANAGEMENT */}
+
+              <span className="brand">INVENTORY MANAGEMENT - ADMIN</span>
+            </a>
+          </div>
+          <div className="nav navbar-nav mx-auto navbar">
+            <a className="navbar-brand mx-auto nav navbar-nav navbar" href="#"/>
+          </div>
+          <div className="nav mx-auto navbar-nav navbar-right order-3">
+            <ul className="navbar-nav ml-auto">
+            
+            {/* <Link className="btn" to="/adminchatapplication">
+                {" "}
+                <a className="navbtn2 ">Chat</a>
+              </Link> */}
+
+              {/* <Link className="btn" to="/about">
+                {" "}
+                <a className="navbtn2 ">About</a>
+              </Link> */}
+              
+              <Link className="btn" to="/home">
+                {" "}
+                <a className="navbtn2 ">Home</a>
+              </Link>
+             
+              <Link  className="btn  me-2" to="/login">
+                {" "}
+                <a className="navbtn2 "> Logout</a>
+              </Link>
+              
+            </ul>
+          </div>
+        </nav>
       </div>
       <div className="container">
         <div className="shadow  mt-4 p-5 bg-white rounded text-dark">

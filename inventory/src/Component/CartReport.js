@@ -27,7 +27,7 @@ function Report() {
   return (
     <>
       <div>
-        <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
+        {/* <div className="bg-secondary nav-bar nav-sticky navbar-expand-md navbar-dark bg-dark">
           <nav className="navbar navbar-expand-md navbar-dark navsection shadow">
             <span id="q">eeee</span>
             <NavNotification />
@@ -54,7 +54,53 @@ function Report() {
               </ul>
             </div>
           </nav>
-        </div>
+        </div> */}
+         <div className="bg-secondary nav-bar navsection  navbar-expand-md navbar-dark bg-dark">
+        <nav className="navbar shadow navsection navbar-expand-md navbar-dark ">
+
+<NavNotification/>
+  
+
+          <div className="nav navbar-nav mx-auto navbar-left">
+            <a
+              className="navbar-brand mx-auto nav navbar-nav navbar-right"
+              href="#"
+            >
+              {/* INVENTORY MANAGEMENT */}
+
+              <span className="brand">INVENTORY MANAGEMENT - ADMIN</span>
+            </a>
+          </div>
+          <div className="nav navbar-nav mx-auto navbar">
+            <a className="navbar-brand mx-auto nav navbar-nav navbar" href="#"/>
+          </div>
+          <div className="nav mx-auto navbar-nav navbar-right order-3">
+            <ul className="navbar-nav ml-auto">
+            
+            {/* <Link className="btn" to="/adminchatapplication">
+                {" "}
+                <a className="navbtn2 ">Chat</a>
+              </Link> */}
+
+              <Link className="btn" to="/deliverycart">
+                {" "}
+                <a className="navbtn2 ">AddCart</a>
+              </Link>
+              
+              <Link className="btn" to="/viewdelivery">
+                {" "}
+                <a className="navbtn2 ">ViewQuery</a>
+              </Link>
+             
+              <Link  className="btn  me-2" to="/login">
+                {" "}
+                <a className="navbtn2 "> Logout</a>
+              </Link>
+              
+            </ul>
+          </div>
+        </nav>
+      </div>
       </div>
       
       <div className="container">

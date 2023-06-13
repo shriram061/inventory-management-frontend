@@ -4,6 +4,8 @@ import { Link} from "react-router-dom";
 import NavNotification from "./NavNotification";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Swal from 'sweetalert2';
+
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 function ContactUsForm() {
   const [name, setName] = useState("");
@@ -11,26 +13,57 @@ function ContactUsForm() {
   const [question, setQuestion] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
  
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // emailId={useremailmain};
+  //   const newQuery = { name,emailId, phoneNo, question };
+  //   axios
+  //     .post("http://localhost:9876/contact/querypost", newQuery)
+  //     .then((response) => {
+  //       console.log(response);
+  //       // Reset form fields on success
+  //       // const a = {useremailmain};
+  //       setName("");
+  //       setEmailId("");
+  //       setPhoneNo("");
+  //       setQuestion("");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // emailId={useremailmain};
-    const newQuery = { name,emailId, phoneNo, question };
+    const newQuery = { name, emailId, phoneNo, question };
     axios
-      .post("http://localhost:9876/contact/querypost", newQuery)
+      .post('http://localhost:9876/contact/querypost', newQuery)
       .then((response) => {
         console.log(response);
         // Reset form fields on success
-        // const a = {useremailmain};
-        setName("");
-        setEmailId("");
-        setPhoneNo("");
-        setQuestion("");
+        setName('');
+        setEmailId('');
+        setPhoneNo('');
+        setQuestion('');
+  
+        // Display success message using SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Form submitted successfully!',
+        });
       })
       .catch((error) => {
         console.log(error);
+  
+        // Display error message using SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Form submission failed!',
+        });
       });
   };
-
+  
   const usernamemain = localStorage.getItem('name');
   const useremailmain = localStorage.getItem('email');
   const [dropdownOpen, setDropdownOpen] = useState(false);
